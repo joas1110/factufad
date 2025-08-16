@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: factufad-api
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: FIREBASE_PROJECT_ID
+        value: TU_PROJECT_ID
+      - key: ALLOWED_ORIGINS
+        value: https://TU-SITIO.netlify.app, http://localhost:5173
+      - key: GOOGLE_APPLICATION_CREDENTIALS_JSON
+        sync: false
